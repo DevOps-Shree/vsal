@@ -1,0 +1,33 @@
+version: "3.3"
+services:  
+  vsal:
+    restart: on-failure
+    build: ./VSAL-lab-website
+    ports:
+      - "3000:3000"
+    networks:
+      my-network:
+        ipv4_address: 172.20.0.2
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    networks:
+      - my-network
+    depends_on:
+      - vsal
+
+  jenkins:
+    build: ./jenkins
+    ports:
+      - "8080:8080"
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.20.0.0/16"
