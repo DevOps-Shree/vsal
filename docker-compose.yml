@@ -18,12 +18,7 @@ services:
     depends_on:
       - vsal
 
-  jenkins:
-    build: ./jenkins
-    ports:
-      - "8080:8080"
-    networks:
-      - my-network
+
 
 networks:
   my-network:
