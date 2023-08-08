@@ -2,7 +2,7 @@ version: "3.3"
 services:  
   vsal:
     restart: on-failure
-    build: ./VSAL-lab-website
+    build: ./vsal
     ports:
       - "3000:3000"
     networks:
